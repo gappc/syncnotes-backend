@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  y-websocket:
+    build: .
+    ports:
+      - "1234:1234"
+    volumes:
+      - ./db:/app/db
+    environment:
+      YPERSISTENCE: /app/db
+      HOST: 0.0.0.0
+      PORT: 1234
+    restart: unless-stopped
