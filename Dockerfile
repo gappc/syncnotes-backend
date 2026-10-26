@@ -11,7 +11,8 @@ RUN mkdir -p /app/db
 RUN npm init -y
 
 # Install y-websocket and @y/websocket-server
-RUN npm install --save y-websocket @y/websocket-server
+# Pinned: @y/websocket-server >=0.1.5 dropped LevelDB persistence (YPERSISTENCE)
+RUN npm install --save y-websocket@3.0.0 @y/websocket-server@0.1.1
 
 # Expose the port
 EXPOSE 1234
