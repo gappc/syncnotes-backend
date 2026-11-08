@@ -9,7 +9,7 @@ services:
     volumes:
       - ./db:/app/db
     environment:
-      YPERSISTENCE: /app/db
+      SQLITE_DATABASE: /app/db/yjs-documents.sqlite
       HOST: 0.0.0.0
       PORT: 1234
     restart: unless-stopped

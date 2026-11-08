@@ -1,26 +1,25 @@
 # Use a lightweight Node.js image
-FROM node:24-alpine
+FROM node:26-alpine3.24
 
 # Create app directory
 WORKDIR /app
 
+# Install the sync server (Hocuspocus + SQLite)
+COPY sync/package.json sync/package-lock.json ./
+RUN npm ci --omit=dev
+
+# Node 26 runs the TypeScript sources directly (type stripping)
+COPY sync/*.ts ./
+
 # Make sure db exists
 RUN mkdir -p /app/db
-
-# Initialize a new Node.js project. It is required to run y-websocket
-RUN npm init -y
-
-# Install y-websocket and @y/websocket-server
-# Pinned: @y/websocket-server >=0.1.5 dropped LevelDB persistence (YPERSISTENCE)
-RUN npm install --save y-websocket@3.0.0 @y/websocket-server@0.1.1
 
 # Expose the port
 EXPOSE 1234
 
 # Set environment variables (can be overridden at runtime)
-ENV YPERSISTENCE=/app/db
+ENV SQLITE_DATABASE=/app/db/yjs-documents.sqlite
 ENV HOST=0.0.0.0
 ENV PORT=1234
 
-# Command to run y-websocket
-CMD ["npx", "y-websocket"]
+CMD ["node", "server.ts"]

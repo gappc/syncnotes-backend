@@ -1,0 +1,4 @@
+node_modules
+sync/node_modules
+db
+.git

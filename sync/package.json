@@ -1,0 +1,28 @@
+{
+  "name": "syncnotes-sync",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Hocuspocus sync server for SyncNotes, persisting Yjs documents in SQLite.",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "start": "node server.ts",
+    "dev": "node --watch server.ts",
+    "migrate-leveldb": "node migrate-leveldb.ts",
+    "type-check": "tsc --noEmit"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@hocuspocus/extension-database": "^4.8.0",
+    "@hocuspocus/server": "^4.8.0",
+    "y-leveldb": "^0.2.0",
+    "y-protocols": "^1.0.7",
+    "yjs": "^13.6.33"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "typescript": "~6.0.3"
+  }
+}
