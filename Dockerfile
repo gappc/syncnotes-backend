@@ -1,6 +1,6 @@
 # Use a lightweight Node.js image - pinned by tag and index digest, fully qualified
-# (built on the server by gappc-deploy, hosting plan v0.3; podman there has no short names)
-FROM docker.io/library/node:26.13.0-alpine3.24@sha256:8996bb5821d62a8fd9bb27c1cb07462f3fdce6e47d640c6a881ead0b064ce216
+# (built by deploy, hosting plan v0.3b; podman on the servers has no short names)
+FROM docker.io/library/node:26.13.0-alpine3.24@sha256:8996bb5821d62a8fd9bb27c1cb07462f3fdce6e47d640c6a881ead0b064ce216 AS app
 
 # Create app directory
 WORKDIR /app

@@ -1,0 +1,7 @@
+version = 1
+
+[[part]]
+name = "app"
+stage = "app"
+version_check = false
+reason = "Hocuspocus ohne /_version bis zur Zusammenlegung (D 12.4)"
